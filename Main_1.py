@@ -30,6 +30,9 @@ def main(page: ft.Page):
 
     # Variável para controle do sexo
     sexo_value = None
+    # Função que atualiza os controles da seção "Saúde Reprodutiva" de acordo
+    # com o sexo selecionado. Será definida em build_saude_reprodutiva.
+    toggle_controles_sexo_fn = lambda: None
 
     # Função para salvar em TXT
     def save_to_txt(e):
@@ -91,6 +94,8 @@ def main(page: ft.Page):
             nonlocal sexo_value
             sexo_value = e.control.value
             interrogatorio["1. Identificação"].update({"Sexo": e.control.value})
+            # Atualiza a visibilidade dos campos de "Saúde Reprodutiva"
+            toggle_controles_sexo_fn()
             page.update()
 
         campos["Sexo"].on_change = update_sexo
@@ -351,6 +356,7 @@ def main(page: ft.Page):
 
     # Seção 7: Saúde Reprodutiva
     def build_saude_reprodutiva():
+        nonlocal toggle_controles_sexo_fn
         # Controles para mulheres
         campos_mulheres = {
             "Idade da menarca": ft.TextField(label="Idade da menarca", visible=False),
@@ -427,6 +433,9 @@ def main(page: ft.Page):
                 campo.visible = is_male
 
             page.update()
+
+        # Expõe a função para que a seção de Identificação possa acioná-la
+        toggle_controles_sexo_fn = toggle_controles_sexo
 
         def update_campos(e, campo, secao):
             interrogatorio[secao].update({campo: e.control.value})
