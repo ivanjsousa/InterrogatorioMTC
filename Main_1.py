@@ -3,6 +3,39 @@ from datetime import datetime
 import os
 
 
+def save_interrogatorio_to_txt(interrogatorio: dict, page: ft.Page):
+    """Save questionnaire data to a timestamped TXT file."""
+    try:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"interrogatorio_mtc_{timestamp}.txt"
+
+        if not os.path.exists("dados_interrogatorio"):
+            os.makedirs("dados_interrogatorio")
+
+        with open(f"dados_interrogatorio/{filename}", "w", encoding="utf-8") as f:
+            for section, content in interrogatorio.items():
+                f.write(f"\n{section}\n")
+                f.write("=" * 50 + "\n")
+                for key, value in content.items():
+                    if value:
+                        f.write(f"{key}: {value}\n")
+
+        page.snack_bar = ft.SnackBar(
+            ft.Text(f"Dados salvos com sucesso em {filename}"),
+            bgcolor=ft.colors.GREEN_400,
+        )
+        page.snack_bar.open = True
+        page.update()
+
+    except Exception as e:  # pragma: no cover - defensive
+        page.snack_bar = ft.SnackBar(
+            ft.Text(f"Erro ao salvar: {str(e)}"),
+            bgcolor=ft.colors.RED_400,
+        )
+        page.snack_bar.open = True
+        page.update()
+
+
 def main(page: ft.Page):
     page.title = "Interrogatório MTC"
     page.scroll = "adaptive"
@@ -33,35 +66,7 @@ def main(page: ft.Page):
 
     # Função para salvar em TXT
     def save_to_txt(e):
-        try:
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"interrogatorio_mtc_{timestamp}.txt"
-
-            if not os.path.exists("dados_interrogatorio"):
-                os.makedirs("dados_interrogatorio")
-
-            with open(f"dados_interrogatorio/{filename}", "w", encoding="utf-8") as f:
-                for section, content in interrogatorio.items():
-                    f.write(f"\n{section}\n")
-                    f.write("=" * 50 + "\n")
-                    for key, value in content.items():
-                        if value:  # Só escreve se tiver valor
-                            f.write(f"{key}: {value}\n")
-
-            page.snack_bar = ft.SnackBar(
-                ft.Text(f"Dados salvos com sucesso em {filename}"),
-                bgcolor=ft.colors.GREEN_400
-            )
-            page.snack_bar.open = True
-            page.update()
-
-        except Exception as e:
-            page.snack_bar = ft.SnackBar(
-                ft.Text(f"Erro ao salvar: {str(e)}"),
-                bgcolor=ft.colors.RED_400
-            )
-            page.snack_bar.open = True
-            page.update()
+        save_interrogatorio_to_txt(interrogatorio, page)
 
     # Seção 1: Identificação
     def build_identificacao():
@@ -759,4 +764,6 @@ def main(page: ft.Page):
     )
 
 
-ft.app(target=main)
+
+if __name__ == "__main__":
+    ft.app(target=main)
