@@ -1,0 +1,83 @@
+{
+    "identificacao": {
+        "nome": "Ivan de Jesus Sousa",
+        "idade": "43",
+        "sexo": "Masculino",
+        "estado_civil": "Solteiro",
+        "profissao": "",
+        "queixa_principal": "Dor no ombro esquerdo (bursite)",
+        "queixas_secundarias": "Libido em excesso",
+        "inicio_queixas": "",
+        "fatores_agravantes": ""
+    },
+    "historico_saude": {
+        "doencas_anteriores": "Não",
+        "cirurgias": "sim. Tornozelo esquerdo",
+        "medicamentos": "nao",
+        "alergias": "nao",
+        "historico_familiar": ""
+    },
+    "sono": {
+        "dificuldade_dormir": "não",
+        "acorda_noite": "não",
+        "horas_acorda": null,
+        "sonha_muito": "sim",
+        "sono_reparador": "sim"
+    },
+    "apetite_digestao": {
+        "apetite": "aumentado",
+        "preferencia_comida": "quentes",
+        "sabor_boca": "nenhum",
+        "peso_estomago": "não",
+        "plenitude": "não"
+    },
+    "sede": {
+        "sede_frequente": "sim",
+        "preferencia_bebida": "indiferente",
+        "modo_beber": "moderadamente"
+    },
+    "evacuacao_urina": {
+        "frequencia_evacuacao": "",
+        "caracteristicas_fezes": "com sangue",
+        "gases": "não",
+        "caracteristicas_urina": "clara",
+        "frequencia_urina": "",
+        "dor_urina": "não"
+    },
+    "saude_reprodutiva": {
+        "libido": "alta",
+        "erecao": "normal",
+        "ejaculacao": "precoce"
+    },
+    "emocoes": {},
+    "termorregulacao": {
+        "sensacao_termica": "muito frio",
+        "suor_espontaneo": "não",
+        "suor_noturno": "não",
+        "odor_suor": "não"
+    },
+    "dor": {
+        "localizacao": "",
+        "tipo": "cólica",
+        "intensidade": 0.0,
+        "frequencia": "",
+        "fatores": ""
+    },
+    "lingua_pulso": {
+        "cor_lingua": "avermelhada",
+        "saburra": "amarela",
+        "umidade": "seca",
+        "forma": "inchada",
+        "pulso": ""
+    },
+    "estacoes_horarios": {
+        "estacao_piora": "não",
+        "horario_piora": ""
+    },
+    "8. Emoções predominantes": {
+        "Emoções predominantes": "Raiva, Frustração",
+        "Situações de estresse": "",
+        "Ansiedade": "não",
+        "Estado emocional atual": ""
+    }
+}
